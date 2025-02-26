@@ -27,15 +27,15 @@ public class FileStorageService {
     }
 
     public File getDownloadFile(String fileName) throws Exception {
-        if(fileName == null) {
-            throw new NullPointerException("FilName is null");
+        if (fileName == null) {
+            throw new NullPointerException("fileName is null");
         }
         var fileToDownload = new File(STORAGE_DIRECTORY + File.separator + fileName);
-        if (!Objects.equals(fileToDownload.getParent(),STORAGE_DIRECTORY)) {
-            throw new SecurityException("Unsupported file name");
+        if (!Objects.equals(fileToDownload.getParent(), STORAGE_DIRECTORY)) {
+            throw new SecurityException("Unsupported filename!");
         }
         if (!fileToDownload.exists()) {
-            throw new FileNotFoundException("no filed named " + fileName);
+            throw new FileNotFoundException("No file named: " + fileName);
         }
         return fileToDownload;
     }
